@@ -1,4 +1,4 @@
-pytgcalls
+pytgcalls==2.1.0
 python-dotenv
 youtube-search-python
 tgcrypto
