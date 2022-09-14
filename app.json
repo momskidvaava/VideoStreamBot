@@ -5,27 +5,33 @@
     "repository": "https://github.com/sakhaavvaavaj93/VideoStreamBot",
     "env": {
       "STRING_SESSION": {
+        "value": "",
         "description": "A Pyrogram session string.Generate it using replit",
         "required": true
       },
       "BOT_TOKEN": {
+        "value": "",
         "description": "A bot token from @BotFather.",
         "required": true
       },
       "API_ID": {
+        "value": "",
         "description": "An api ID from https://my.telegram.org/apps.",
         "required": true
       },
       "API_HASH": {
+        "value": "",
         "description": "An api hash from https://my.telegram.org/apps.",
         "required": true
       },
       "VIDEO_CHAT_ID": {
+        "value": "",
         "description": "A Group Chat Id To Stream Videos",
         "required": true
       },
       "CUSTOM_ICON": {
-        "description": "A custom icon to be displayed rather than the default"
+        "value": "default",
+        "description": "A custom icon to be displayed rather than the default",
         "required": false
       }
     },
