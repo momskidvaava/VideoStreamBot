@@ -8,5 +8,4 @@ pafy
 yt-dlp
 requests
 ffmpeg-python
-heroku3
 python-bot
