@@ -2,6 +2,7 @@ pytgcalls==3.0.0.dev19
 python-dotenv
 youtube-search-python
 tgcrypto
-pyrogram
+pyrogram==1.4.16
 youtube-dl
 pafy
+yt-dlp
