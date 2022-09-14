@@ -1,5 +1,5 @@
 tgcalls==3.0.0.dev5
-python-dotenv
+dotenv
 youtube-search-python
 tgcrypto
 pyrogram==1.4.16
