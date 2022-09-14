@@ -6,7 +6,7 @@ from .. import HELP, bot
 # basic commands
 
 
-@bot.on_message(filters.command("alive"))
+@bot.on_message(filters.command("alive","start"))
 async def startxd(client, message):
     return await message.reply(
         "Yes I am Alive!,Who Cares About Someone Else!"
@@ -25,7 +25,7 @@ async def start(client, message):
                 [
                     InlineKeyboardButton(
                         text="Repository",
-                        url="https://github.com/VegetaxD/VideoStreamBot",
+                        url="https://github.com/sakhaavvaavaj93/VideoStreamBot",
                     )
                 ],
                 [
@@ -36,29 +36,13 @@ async def start(client, message):
                 [
                     InlineKeyboardButton(
                         text="Support Chat/Demo",
-                        url="https://t.me/VideoStreamSupport",
+                        url="https://t.me/KanimangalamKovilakam",
                     )
                 ],
             ]
         ),
     )
 
-
-@bot.on_message(filters.command("repo"))
-async def repo(client, message):
-    return await message.reply(
-        "Here is the Repository!",
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Repository",
-                        url="https://github.com/VegetaxD/VideoStreamBot",
-                    )
-                ]
-            ]
-        ),
-    )
 
 
 @bot.on_callback_query(filters.regex("commands"))
