@@ -1,4 +1,4 @@
-pytgcalls==3.0.0.dev19
+pytgcalls
 python-dotenv
 youtube-search-python
 tgcrypto
@@ -6,3 +6,7 @@ pyrogram==1.4.16
 youtube-dl
 pafy
 yt-dlp
+requests
+ffmpeg-python
+heroku3
+python-bot
