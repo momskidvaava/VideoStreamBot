@@ -1,8 +1,8 @@
 FROM debian:latest
 RUN apt update && apt upgrade -y
 RUN apt install git curl python3-pip -y
-RUN pip install -U pytgcalls
+pip3 install -U pytgcalls[pyrogram]
 COPY . /app
 WORKDIR /app
-RUN pip install -U -r requirements.txt
+RUN pip3 install -U -r requirements.txt
 CMD python3 -m VideoxD
