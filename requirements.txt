@@ -9,4 +9,4 @@ yt-dlp
 requests
 ffmpeg-python
 heroku3
-pytgcalls==2.0.0
+pytgcalls
