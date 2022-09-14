@@ -40,10 +40,7 @@ async def stream(client, message):
         await que.put(next_vid)
         global number
         number += 1
-        content = user_str if user_str else "Telegram Video"
-        return await message.reply(
-            f"Added **Video🎥** : **__{content}__** To Queue!\n\n**Queued at #{number}**"
-        )
+        content = user_str if user_str else "Telegram Video"      
     try:
         invideo = user_str if user_str else video
         await video_stream(chat_id, invideo, client, message)
@@ -59,16 +56,11 @@ async def stop(client, message):
     if not Calls.is_running:
         return await message.reply("No Stream Going On!")
     global number
-    admins = await admin_check(client, message)
-    if message.from_user.id not in admins:
-        return await message.reply(
-            "You Dont Have Sufficient Permissions!,(Manage Video Chats)"
-        )
+    admins = await admin_check(client, message)  
     await Calls.stop()
     number = 0
     que._queue.clear()
-    return await message.reply("The Video Has Been Stopped Successfully!")
-
+    
 
 # Skip Video Stream
 
@@ -76,11 +68,7 @@ async def stop(client, message):
 @bot.on_message(filters.command("vskip") & filters.chat(chat_id))
 async def skip(client, message):
     global number
-    admins = await admin_check(client, message)
-    if message.from_user.id not in admins:
-        return await message.reply(
-            "You Dont Have Sufficient Permissions!,(Manage Video Chats)"
-        )
+    admins = await admin_check(client, message)   
     if que.empty():
         await message.reply("No More Videos In Queue!\nLeaving Video Chat!")
         return await Calls.stop()
@@ -95,38 +83,20 @@ async def skip(client, message):
 
 # Playout Ended
 @Calls.on_video_playout_ended
-async def media_ended(_, __):
-    if que.empty():
-        await bot.send_message(
-            chat_id, "No More Videos In Queue!\n\nLeaving Video Chat!"
-        )
-        return await Calls.stop()
-    else:
-        process = await bot.send_message(chat_id, "Processing!")
+async def media_ended(_, __):   
+        return await Calls.stop()   
         stuff = await que.get()
     try:
         if "DOWNLOADS" in stuff:
-            video, title = stuff, "Telegram Video"
-            if cicon:
-                try:
-                    thumb = cicon
-                except:
-                    thumb = "./img.jpg"
-            else:
-                thumb = "./img.jpg"
-            await Calls.start_video(video, repeat=False)
+            video, title = stuff, "Telegram Video"          
+            await Calls.start_video(video, repeat=True)
         else:
             thumb, video, title = await loop.run_in_executor(
                 None, youtube_stream, stuff
             )
         await process.delete()
-        await Calls.start_video(video, repeat=False)
+        await Calls.start_video(video, repeat=True)
         global number
-        number -= 1
-        return await bot.send_photo(
-            chat_id,
-            photo=thumb,
-            caption=f"Started Streaming!\n\n**Video🎥** : **__{title}__**",
-        )
+        number -= 1       
     except Exception as e:
         return await bot.send_message(chat_id, e)
